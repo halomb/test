@@ -16,19 +16,9 @@ window._CCSettings = {
         {
             url: "db://assets/gameScene.fire",
             uuid: "5dSM2eEhRNc7nv6qrhZT+6"
-        },
-        {
-            url: "db://assets/testScene.fire",
-            uuid: "b649FHdbhHTbE2M5T1E8LT"
         }
     ],
     packedAssets: {
-        "073b98af0": [
-            "29FYIk+N1GYaeWH/q1NxQO",
-            "b649FHdbhHTbE2M5T1E8LT",
-            "e97GVMl6JHh5Ml5qEDdSGa",
-            "f0BIwQ8D5Ml7nTNQbh1YlS"
-        ],
         "07df96b74": [
             "29FYIk+N1GYaeWH/q1NxQO",
             "5dSM2eEhRNc7nv6qrhZT+6",

@@ -31,7 +31,7 @@ window.__require = function e(t, n, r) {
     "use strict";
     cc.sys.isBrowser && window.addEventListener("message", function(e) {
       console.log("----cocos---", e.data);
-      window.onWebViewCall(e, e.data);
+      window.onWebViewCall && window.onWebViewCall(e, e.data);
     });
     cc.Class({
       extends: cc.Component,
