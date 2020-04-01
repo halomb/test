@@ -29,6 +29,10 @@ window.__require = function e(t, n, r) {
     "use strict";
     cc._RF.push(module, "489db0rnn5D7aYYJeJAf2TB", "NewScript");
     "use strict";
+    cc.sys.isBrowser && window.addEventListener("message", function(e) {
+      console.log("----cocos---", e.data);
+      window.onWebViewCall(e, e.data);
+    });
     cc.Class({
       extends: cc.Component,
       properties: {
@@ -48,16 +52,16 @@ window.__require = function e(t, n, r) {
         window.onWebViewCall = this.onWebViewCall.bind(this);
       },
       onBtnClick: function onBtnClick() {
-        cc.sys.isNative;
-        this.webView.evaluateJS("onGetMessage()");
-      },
-      innerBtnClick: function innerBtnClick() {
-        console.log("-------web--------onClick-----\x3e>cocos JS-------------", window.isNative);
-        window.isNative ? document.location = "testkey://a=1&b=2" : parent.postMessage("------------hello!-----cocos---------", "*");
-      },
-      onGetMessage: function onGetMessage() {
-        this.count += 1;
-        this.debugText.string = this.count;
+        var data = {
+          id: 123456
+        };
+        if (cc.sys.isNative) {
+          data = JSON.stringify(data);
+          this.webView.evaluateJS("onGetMessage(" + data + ")");
+        } else {
+          console.log("-----cocos------Browser---------");
+          this.webView._impl._iframe.contentWindow.postMessage(data, "*");
+        }
       },
       onWebViewCall: function onWebViewCall(e, url) {
         this.debugText.string = url;
@@ -69,6 +73,10 @@ window.__require = function e(t, n, r) {
     "use strict";
     cc._RF.push(module, "57e47l4puBL6ZHgbUZH1r8T", "gameScript");
     "use strict";
+    window.addEventListener("message", function(e) {
+      console.log("----cocos---", e.data);
+      window.onGetMessage && window.onGetMessage(e.data);
+    });
     cc.Class({
       extends: cc.Component,
       properties: {
@@ -76,14 +84,14 @@ window.__require = function e(t, n, r) {
       },
       start: function start() {
         this.count = 0;
+        window.onGetMessage = this.onGetMessage.bind(this);
       },
       innerBtnClick: function innerBtnClick() {
         console.log("-------web--------onClick-----\x3e>cocos JS-------------", window.isNative);
         window.isNative ? document.location = "testkey://a=1&b=2" : parent.postMessage("------------hello!-----cocos---------", "*");
       },
-      onGetMessage: function onGetMessage() {
-        this.count += 1;
-        this.debugText.string = this.count;
+      onGetMessage: function onGetMessage(string) {
+        this.debugText.string = string;
       }
     });
     cc._RF.pop();
