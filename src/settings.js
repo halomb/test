@@ -11,15 +11,15 @@ window._CCSettings = {
     rawAssets: {
         assets: {}
     },
-    launchScene: "db://assets/testScene.fire",
+    launchScene: "db://assets/gameScene.fire",
     scenes: [
-        {
-            url: "db://assets/testScene.fire",
-            uuid: "b649FHdbhHTbE2M5T1E8LT"
-        },
         {
             url: "db://assets/gameScene.fire",
             uuid: "5dSM2eEhRNc7nv6qrhZT+6"
+        },
+        {
+            url: "db://assets/testScene.fire",
+            uuid: "b649FHdbhHTbE2M5T1E8LT"
         }
     ],
     packedAssets: {
