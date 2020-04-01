@@ -88,7 +88,7 @@ window.__require = function e(t, n, r) {
       },
       innerBtnClick: function innerBtnClick() {
         console.log("-------web--------onClick-----\x3e>cocos JS-------------", window.isNative);
-        window.isNative ? document.location = "testkey://a=1&b=2" : parent.postMessage("------------hello!-----cocos---------", "*");
+        document.location = "testkey://a=1&b=2";
       },
       onGetMessage: function onGetMessage(string) {
         this.debugText.string = string;
