@@ -57,7 +57,7 @@ window.__require = function e(t, n, r) {
         };
         if (cc.sys.isNative) {
           data = JSON.stringify(data);
-          this.webView.evaluateJS("onGetMessage(" + data + ")");
+          this.webView.evaluateJS("window.onGetMessage(" + data + ")");
         } else {
           console.log("-----cocos------Browser---------");
           this.webView._impl._iframe.contentWindow.postMessage(data, "*");
@@ -88,7 +88,7 @@ window.__require = function e(t, n, r) {
       },
       innerBtnClick: function innerBtnClick() {
         console.log("-------web--------onClick-----\x3e>cocos JS-------------", window.isNative);
-        document.location = "testkey://a=1&b=2";
+        window.isNative ? document.location = "testkey://a=1&b=2" : parent.postMessage("------------hello!-----cocos---------", "*");
       },
       onGetMessage: function onGetMessage(string) {
         this.debugText.string = string;
