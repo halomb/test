@@ -29,10 +29,6 @@ window.__require = function e(t, n, r) {
     "use strict";
     cc._RF.push(module, "489db0rnn5D7aYYJeJAf2TB", "NewScript");
     "use strict";
-    cc.sys.isBrowser && window.addEventListener("message", function(e) {
-      console.log("----cocos---", e.data);
-      window.onWebViewCall && window.onWebViewCall(e, e.data);
-    });
     cc.Class({
       extends: cc.Component,
       properties: {
@@ -49,7 +45,6 @@ window.__require = function e(t, n, r) {
         }
         this.webView.setJavascriptInterfaceScheme(scheme);
         this.webView.setOnJSCallback(jsCallback);
-        window.onWebViewCall = this.onWebViewCall.bind(this);
       },
       onBtnClick: function onBtnClick() {
         var data = {
@@ -88,7 +83,7 @@ window.__require = function e(t, n, r) {
       },
       innerBtnClick: function innerBtnClick() {
         console.log("-------web--------onClick-----\x3e>cocos JS-------------", window.isNative);
-        window.isNative ? document.location = "testkey://a=1&b=2" : parent.postMessage("------------hello!-----cocos---------", "*");
+        window.isNative ? document.location = "cardgameslobby://a=1&b=2" : parent.postMessage("------------hello!-----cocos---------", "*");
       },
       onGetMessage: function onGetMessage(string) {
         this.debugText.string = string;
